@@ -15,10 +15,11 @@ A ideia aqui é oferecer uma experiência rápida e prática de DevOps com a cri
 ```#vagrant up```
 
 ## Acessando o ambiente:
-Para acessar cada master entre com o comando:
-``` #vagrant ssh-config
+Para acessar cada master entre com o comando: 
+```#vagrant ssh-config```
 
-Resultado:
+### Resultado:
+``` 
 Host balancer
   HostName 127.0.0.1
   User vagrant
@@ -62,4 +63,36 @@ Host master1
   IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/master1/virtualbox/private_key
   IdentitiesOnly yes
   LogLevel FATAL
+```
+
+### Para acessar o balancer
+```ssh -i IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/balancer/virtualbox/private_key vagrant@127.0.0.1 -p2222```
+### Para acessar o master1
+```ssh -i IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/balancer/virtualbox/private_key vagrant@127.0.0.1 -p2220```
+### Para acessar o master2
+```ssh -i IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/balancer/virtualbox/private_key vagrant@127.0.0.1 -p2201```
+### Para acessar o master3
+```ssh -i IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/balancer/virtualbox/private_key vagrant@127.0.0.1 -p2202```
+
+# Pós Instalação
+No meio do provisionamento, o K8s foi instalado, geradondo um token de acesso. Procure algo parecido com isso:
+```
+kubeadm join 172.27.11.200:6443 --token 6o9xp8.88ad2pstfd3h77fj \
+    --discovery-token-ca-cert-hash sha256:eafa5758a4b8e230739e05b04ec7043205ace1a5038ae6e48e9d8c6f23f4c99f \
+    --control-plane --certificate-key 6cfd7416e3cb9bf4227132d9c65ed347e79dd56b2391f960dec4b667dcf793d1  
+```
+Copie e cole, acrescentando no final do comando (--apiserver-advertise-address=172.27.11.20 no master2) no master2 e (--apiserver-advertise-address=172.27.11.30) master3. No exemplo a baixo foi feito no master2:
+
+``` 
+kubeadm join 172.27.11.200:6443 --token 6o9xp8.88ad2pstfd3h77fj \
+    --discovery-token-ca-cert-hash sha256:eafa5758a4b8e230739e05b04ec7043205ace1a5038ae6e48e9d8c6f23f4c99f \
+    --control-plane --certificate-key 6cfd7416e3cb9bf4227132d9c65ed347e79dd56b2391f960dec4b667dcf793d1  --apiserver-advertise-address=172.27.11.20
+```
+Acesse o seu master1 e entre com o comando:
+``` kubctl get node
+#Deverá aparecer algo semelhante:
+NAME     STATUS    ROLES   AGE    VERSION
+master1  Ready     master  4m51s  v1.16.1
+master2  Ready     master  4m51s  v1.16.1
+master3  Ready     master  4m51s  v1.16.1
 ```

@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
         vb.memory = conf['memory']
         vb.cpus = conf['cpus']
       end
-      k.vm.provision "shell", path: "./PuppetServer/#{name}.sh"
+      k.vm.provision "shell", path: "./#{name}.sh"
       end   
     end
   end

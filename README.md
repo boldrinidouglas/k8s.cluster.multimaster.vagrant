@@ -12,57 +12,54 @@ A ideia aqui é oferecer uma experiência rápida e prática de DevOps com a cri
 ## Instalação
 1. Crie um diretorio e copie os arquivos lá para dentro (master1, master2, master3 e o Vagrantfile). 
 2. Após isso entre com os comandos a seguir:
-> vagrant up
+```#vagrant up```
 
 ## Acessando o ambiente:
 Para acessar cada master entre com o comando:
-> vagrant ssh-config
+``` #vagrant ssh-config
 
->Resposta: 
-># vagrant ssh-config
->
->Resultado:
->Host balancer
->  HostName 127.0.0.1
->  User vagrant
->  Port 2222
->  UserKnownHostsFile /dev/null
->  StrictHostKeyChecking no
->  PasswordAuthentication no
->  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/balancer/virtualbox/private_key
->  IdentitiesOnly yes
->  LogLevel FATAL
->
->Host master3
->  HostName 127.0.0.1
->  User vagrant
->  Port 2202
->  UserKnownHostsFile /dev/null
->  StrictHostKeyChecking no
->  PasswordAuthentication no
->  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/master3/virtualbox/private_key
->  IdentitiesOnly yes
->  LogLevel FATAL
->
->Host master2
->  HostName 127.0.0.1
->  User vagrant
->  Port 2201
->  UserKnownHostsFile /dev/null
->  StrictHostKeyChecking no
->  PasswordAuthentication no
->  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/master2/virtualbox/private_key
->  IdentitiesOnly yes
->  LogLevel FATAL
->
->Host master1
->  HostName 127.0.0.1
->  User vagrant
->  Port 2200
->  UserKnownHostsFile /dev/null
->  StrictHostKeyChecking no
->  PasswordAuthentication no
->  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/master1/virtualbox/private_key
->  IdentitiesOnly yes
->  LogLevel FATAL
+Resultado:
+Host balancer
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/balancer/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
 
+Host master3
+  HostName 127.0.0.1
+  User vagrant
+  Port 2202
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/master3/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+Host master2
+  HostName 127.0.0.1
+  User vagrant
+  Port 2201
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/master2/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+Host master1
+  HostName 127.0.0.1
+  User vagrant
+  Port 2200
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/douglas/k8s-cluster/.vagrant/machines/master1/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+```
